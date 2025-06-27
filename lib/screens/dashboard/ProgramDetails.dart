@@ -1,4 +1,5 @@
 import 'package:cbfapp/models/ongoing_model.dart';
+import 'package:cbfapp/widgets/Button.dart';
 import 'package:cbfapp/widgets/MainText.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -52,7 +53,7 @@ class _ProgramDetailsState extends State<ProgramDetails> with TickerProviderStat
         itemBuilder: (context, index) {
           final session = sessions[index];
 
-          final speakerNames = session.speakers.map((s) => s.fname).join(", ");
+          final speakerNames = session.speakers.map((s) => "${s.fname}  ${s.lname}").join(", ");
 
           // Determine if session is live or ended
           bool isLive = false;
@@ -145,6 +146,23 @@ class _ProgramDetailsState extends State<ProgramDetails> with TickerProviderStat
                     ],
                   ),
                 SizedBox(height: 10,),
+                session.hall!.isNotEmpty ? Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Icon(Icons.room, size: 18, color: Colors.grey),
+                    const SizedBox(width: 6),
+                    Expanded(
+                      child: MainText(
+                        text: session.hall! ?? "N/A",
+                        fontSize: 14,
+                        color: Colors.grey.shade700,
+                      ),
+                    ),
+                  ],
+                ) : Container(),
+                if(isLive)
+                  session.zoomlink!.isNotEmpty ? Button(label: "Join Zoom"): Container(),
+                SizedBox(height: 20,),
                 if (isLive)
                 // Apply the pulsing animation to the LIVE container
                   FadeTransition(
@@ -195,6 +213,7 @@ class _ProgramDetailsState extends State<ProgramDetails> with TickerProviderStat
                       ],
                     ),
                   ),
+
               ],
             ),
           );

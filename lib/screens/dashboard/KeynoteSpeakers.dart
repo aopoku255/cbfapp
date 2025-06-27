@@ -164,7 +164,7 @@ class _KeynoteSpeakersState extends State<KeynoteSpeakers> {
                         ? speaker.parallelSessions.first.topic ?? 'No topic assigned'
                         : 'No topic assigned';
                     final speakerImage = (speaker.image != null && speaker.image!.isNotEmpty)
-                        ? "http://10.0.2.2:8081${speaker.image}"
+                        ? "https://summitapi.cariscabusinessforum.com${speaker.image}"
                         : null;
 
                     return InkWell(

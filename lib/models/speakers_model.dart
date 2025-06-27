@@ -11,15 +11,14 @@ class SpeakersResponseModel {
 
   factory SpeakersResponseModel.fromJson(Map<String, dynamic> json) {
     return SpeakersResponseModel(
-      status: json['status'],
-      message: json['message'],
+      status: json['status'] ?? '',
+      message: json['message'] ?? '',
       data: (json['data'] as List)
           .map((e) => SpeakerModel.fromJson(e))
           .toList(),
     );
   }
 }
-
 
 class SpeakerModel {
   final int id;
@@ -28,10 +27,10 @@ class SpeakerModel {
   final String lname;
   final String? suffix;
   final String email;
-  final String linkedin;
+  final String? linkedin;
   final String company;
   final String bio;
-  final String image;
+  final String? image;
   final String? notes;
   final String custom;
   final List<ParallelSessionModel> parallelSessions;
@@ -43,10 +42,10 @@ class SpeakerModel {
     required this.lname,
     this.suffix,
     required this.email,
-    required this.linkedin,
+    this.linkedin,
     required this.company,
     required this.bio,
-    required this.image,
+    this.image,
     this.notes,
     required this.custom,
     required this.parallelSessions,
@@ -55,18 +54,18 @@ class SpeakerModel {
   factory SpeakerModel.fromJson(Map<String, dynamic> json) {
     return SpeakerModel(
       id: json['id'],
-      prefix: json['prefix'],
-      fname: json['fname'],
-      lname: json['lname'],
+      prefix: json['prefix'] ?? '',
+      fname: json['fname'] ?? '',
+      lname: json['lname'] ?? '',
       suffix: json['suffix'],
-      email: json['email'],
+      email: json['email'] ?? '',
       linkedin: json['linkedin'],
-      company: json['company'],
-      bio: json['bio'],
+      company: json['company'] ?? '',
+      bio: json['bio'] ?? '',
       image: json['image'],
       notes: json['notes'],
-      custom: json['custom'],
-      parallelSessions: (json['ParallelSessions'] as List)
+      custom: json['custom'] ?? '',
+      parallelSessions: (json['ParallelSessions'] as List<dynamic>)
           .map((e) => ParallelSessionModel.fromJson(e))
           .toList(),
     );
@@ -81,6 +80,8 @@ class ParallelSessionModel {
   final String name;
   final String topic;
   final String? sessionChair;
+  final String? hall;
+  final String? zoomlink;
 
   ParallelSessionModel({
     required this.id,
@@ -90,17 +91,21 @@ class ParallelSessionModel {
     required this.name,
     required this.topic,
     this.sessionChair,
+    this.hall,
+    this.zoomlink,
   });
 
   factory ParallelSessionModel.fromJson(Map<String, dynamic> json) {
     return ParallelSessionModel(
       id: json['id'],
       sessionId: json['sessionId'],
-      startTime: json['starttime'],
-      endTime: json['endtime'],
-      name: json['name'],
-      topic: json['topic'],
+      startTime: json['starttime'] ?? '',
+      endTime: json['endtime'] ?? '',
+      name: json['name'] ?? '',
+      topic: json['topic'] ?? '',
       sessionChair: json['sessionchair'],
+      hall: json['hall'],
+      zoomlink: json['zoomlink'],
     );
   }
 }

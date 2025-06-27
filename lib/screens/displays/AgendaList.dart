@@ -288,7 +288,7 @@ class _AgendaListState extends State<AgendaList> with TickerProviderStateMixin {
                                     const SizedBox(height: 4),
                                     sessionGroup.length > 1
                                         ? MainText(
-                                      text: "${sessionGroup.length} Presentations",
+                                      text: "${sessionGroup.length} ${sessionGroup.first.name == "Parallel Session" ? "Presentations":"Activities"}",
                                       fontSize: 13,
                                       color: Colors.grey.shade600,
                                     )

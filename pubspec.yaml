@@ -44,17 +44,26 @@ dependencies:
   intl: ^0.18.1
   shared_preferences: ^2.2.3
   flutter_html: ^3.0.0-alpha.6
-  qr_code_scanner: ^0.4.0
+  mobile_scanner: ^4.0.1
+  rename_app: ^1.6.3
+  socket_io_client: ^3.0.2
+  uuid: ^4.5.1
+  photo_view: ^0.14.0
+  flutter_speed_dial: ^7.0.0
+
+
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_launcher_icons: ^0.13.1
 
+
 flutter_launcher_icons:
   android: true
   ios: true
-  image_path: "assets/images/appicon.png"
+  image_path: "assets/images/africa.png"
 
 
   # The "flutter_lints" package below contains a set of recommended lints to

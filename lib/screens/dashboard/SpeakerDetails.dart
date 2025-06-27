@@ -71,7 +71,7 @@ class _SpeakerDetailsState extends State<SpeakerDetails> {
                     radius: 70, // Larger avatar
                     backgroundColor: Colors.white, // White background for avatar border effect
                     backgroundImage: (speaker.image != null && speaker.image!.isNotEmpty)
-                        ? NetworkImage("http://10.0.2.2:8081${speaker.image}")
+                        ? NetworkImage("https://summitapi.cariscabusinessforum.com${speaker.image}")
                         : null,
                     child: (speaker.image == null || speaker.image!.isEmpty)
                         ? MainText(
@@ -135,7 +135,7 @@ class _SpeakerDetailsState extends State<SpeakerDetails> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             MainText(
-                              text: "Biography",
+                              text: "About Speaker",
                               fontSize: 22,
                               fontWeight: FontWeight.bold,
                               color: AppColors.primaryVoilet,

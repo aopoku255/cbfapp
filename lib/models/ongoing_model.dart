@@ -36,6 +36,8 @@ class SessionData {
   final String name;
   final String topic;
   final String? sessionchair;
+  final String? hall;
+  final String? zoomlink;
   final DateTime createdAt;
   final DateTime updatedAt;
   final Session session;
@@ -49,6 +51,8 @@ class SessionData {
     required this.name,
     required this.topic,
     this.sessionchair,
+    this.hall,
+    this.zoomlink,
     required this.createdAt,
     required this.updatedAt,
     required this.session,
@@ -64,6 +68,8 @@ class SessionData {
       name: json['name'],
       topic: json['topic'],
       sessionchair: json['sessionchair'],
+      hall: json['hall'] ?? "",
+      zoomlink: json['zoomlink'] ?? "",
       createdAt: DateTime.parse(json['createdAt']),
       updatedAt: DateTime.parse(json['updatedAt']),
       session: Session.fromJson(json['session']),

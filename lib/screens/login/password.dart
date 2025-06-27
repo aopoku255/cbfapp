@@ -21,6 +21,8 @@ class _PasswordState extends State<Password> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>(); // ✅ Tip 1
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  bool _obscurePassword = true;
+
   bool isLoading = false;
 
   @override
@@ -118,7 +120,7 @@ class _PasswordState extends State<Password> {
                           SizedBox(height: 20),
                           TextFormField(
                             controller: passwordController,
-                            obscureText: true,
+                            obscureText: _obscurePassword,
                             validator: (value) =>
                             value == null || value.isEmpty ? "Password is required" : null,
                             decoration: InputDecoration(
@@ -131,6 +133,17 @@ class _PasswordState extends State<Password> {
                               focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(color: AppColors.primaryColor, width: 2),
                                 borderRadius: BorderRadius.circular(8),
+                              ),
+                              suffixIcon: IconButton(
+                                icon: Icon(
+                                  _obscurePassword ? Icons.visibility_off : Icons.visibility,
+                                  color: AppColors.primaryGray,
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    _obscurePassword = !_obscurePassword;
+                                  });
+                                },
                               ),
                             ),
                           ),

@@ -1,4 +1,5 @@
 import 'package:cbfapp/screens/agenda/agenda.dart';
+import 'package:cbfapp/screens/dashboard/Announcement.dart';
 import 'package:cbfapp/screens/dashboard/PartnersandSponsors.dart';
 import 'package:cbfapp/screens/dashboard/Profile.dart';
 import 'package:cbfapp/screens/dashboard/ProgramDetails.dart';
@@ -37,6 +38,7 @@ Map<String, WidgetBuilder> get appRoutes{
     '/speaker-details': (context) => const SpeakerDetails(),
     '/program-details': (context) => const ProgramDetails(),
     '/sponsors-partners': (context) => const PartnersandSponsors(),
+    '/announcement': (context) => const AnnouncementPage(),
 
   };
 }
