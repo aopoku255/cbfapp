@@ -101,13 +101,16 @@ class UsersData {
       photoRelease: json['photoRelease'] ?? '',
       category: json['category'] ?? '',
       paymentLink: json['paymentLink'] ?? '',
-      createdAt: DateTime.parse(json['createdAt']),
-      updatedAt: DateTime.parse(json['updatedAt']),
-      checkins: (json['checkins'] as List<dynamic>)
+      createdAt: DateTime.tryParse(json['createdAt'] ?? '') ?? DateTime.now(),
+      updatedAt: DateTime.tryParse(json['updatedAt'] ?? '') ?? DateTime.now(),
+      checkins: json['checkins'] != null
+          ? (json['checkins'] as List)
           .map((e) => CheckinModel.fromJson(e))
-          .toList(),
+          .toList()
+          : [],
     );
   }
+
 }
 
 
@@ -133,9 +136,10 @@ class CheckinModel {
       id: json['id'],
       userId: json['userId'],
       checkinType: json['checkinType'] ?? '',
-      date: DateTime.parse(json['date']),
-      createdAt: DateTime.parse(json['createdAt']),
-      updatedAt: DateTime.parse(json['updatedAt']),
+      date: DateTime.tryParse(json['date'] ?? '') ?? DateTime.now(),
+      createdAt: DateTime.tryParse(json['createdAt'] ?? '') ?? DateTime.now(),
+      updatedAt: DateTime.tryParse(json['updatedAt'] ?? '') ?? DateTime.now(),
+
     );
   }
 }

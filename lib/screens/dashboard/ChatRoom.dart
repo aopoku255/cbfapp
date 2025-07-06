@@ -5,6 +5,7 @@ import 'package:socket_io_client/socket_io_client.dart' as IO;
 import '../../models/user_model.dart';
 import '../../models/users_model.dart';
 import '../../theme/colors.dart';
+import 'AllUsersPage.dart';
 import 'UserChatProfile.dart';
 
 class ChatRoomPage extends StatefulWidget {
@@ -45,9 +46,10 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
     }
   }
 
+
   void _connectToSocket() {
     socket = IO.io(
-        'https://unified-ion-463310-a5.uc.r.appspot.com',
+        'http://10.131.131.166:8080',
         IO.OptionBuilder()
             .setTransports(['websocket'])
             .enableAutoConnect()
@@ -55,7 +57,14 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
 
     socket!.onConnect((_) {
       print('✅ Connected to server');
+      socket!.emit("registerUser", currentUser!.id);
+      print("📤 Sent id to server: ${currentUser!.id}");
     });
+
+    // ✅ Send email of current user to backend
+
+
+
 
     socket!.on("messageHistory", (history) {
       setState(() {
@@ -162,68 +171,64 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
 
     return Scaffold(
       appBar: AppBar(
+
         automaticallyImplyLeading: false,
         backgroundColor: AppColors.primaryColor,
         foregroundColor: AppColors.primaryWhite,
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "$onlineUsers ${onlineUsers > 1 ? "users" : "user"} online",
-              style: const TextStyle(
-                fontSize: 14,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            // const SizedBox(height: 4),
-            // TextField(
-            //   controller: _searchController,
-            //   style: const TextStyle(color: Colors.white),
-            //   decoration: const InputDecoration(
-            //     hintText: 'Search messages...',
-            //     hintStyle: TextStyle(color: Colors.white70),
-            //     border: InputBorder.none,
-            //     isDense: true,
-            //     contentPadding: EdgeInsets.zero,
-            //   ),
-            //   onChanged: (value) {
-            //     setState(() {
-            //       _searchQuery = value.trim().toLowerCase();
-            //     });
-            //   },
-            // ),
-            FutureBuilder<UsersInfoModel?>(
-              future: _allUsers,
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Text("Loading users...");
-                }
-
-                if (snapshot.hasError || !snapshot.hasData || snapshot.data?.data == null) {
-                  return const Text("Failed to load users");
-                }
-
-                final users = snapshot.data!.data;
-
-                final names = users
-                    .map((user) => "${user.firstName} ${user.lastName}")
-                    .join(", ");
-
-                return Text(
-                  names,
+          title: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => AllUsersPage(
+                    onlineUserCount: onlineUsers,
+                  ),
+                ),
+              );
+            },
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "$onlineUsers ${onlineUsers > 1 ? "users" : "user"} online",
                   style: const TextStyle(
                     fontSize: 14,
                     color: Colors.white,
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.bold,
                   ),
-                  overflow: TextOverflow.ellipsis,
-                );
-              },
-            )
+                ),
+                FutureBuilder<UsersInfoModel?>(
+                  future: _allUsers,
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Text("");
+                    }
 
-          ],
-        ),
+                    if (snapshot.hasError || !snapshot.hasData || snapshot.data?.data == null) {
+                      return const Text("Failed to load users");
+                    }
+
+                    final users = snapshot.data!.data;
+
+                    final names = users
+                        .map((user) => "${user.firstName} ${user.lastName}")
+                        .join(", ");
+
+                    return Text(
+                      names,
+                      style: const TextStyle(
+                        fontSize: 14,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                    );
+                  },
+                )
+              ],
+            ),
+          ),
+
         actions: [
           if (_searchQuery.isNotEmpty)
             IconButton(
