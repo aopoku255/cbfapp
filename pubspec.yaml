@@ -50,6 +50,7 @@ dependencies:
   uuid: ^4.5.1
   photo_view: ^0.14.0
   flutter_speed_dial: ^7.0.0
+  rename: ^3.1.0
 
 
 

@@ -33,7 +33,7 @@ class _AllUsersPageState extends State<AllUsersPage> {
 
   void _connectToSocket() {
     socket = IO.io(
-      'http://10.131.131.166:8080', // Replace with your deployed server
+      'https://unified-ion-463310-a5.uc.r.appspot.com', // Replace with your deployed server
       IO.OptionBuilder().setTransports(['websocket']).disableAutoConnect().build(),
     );
 

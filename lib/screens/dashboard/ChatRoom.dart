@@ -49,7 +49,7 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
 
   void _connectToSocket() {
     socket = IO.io(
-        'http://10.131.131.166:8080',
+        'https://unified-ion-463310-a5.uc.r.appspot.com',
         IO.OptionBuilder()
             .setTransports(['websocket'])
             .enableAutoConnect()
