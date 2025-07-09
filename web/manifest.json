@@ -1,11 +1,11 @@
 {
-     "name": "CARISCA SUMMIT 2025",
-     "short_name": "CARISCA SUMMIT 2025",
+     "name": "CARISCA RESEARCH SUMMIT 2025",
+     "short_name": "CARISCA RESEARCH SUMMIT 2025",
      "start_url": ".",
      "display": "standalone",
      "background_color": "#0175C2",
      "theme_color": "#0175C2",
-     "description": "A new Flutter project.",
+     "description": "The fifth annual Supply Chain Research Summit will be held July 16-18, 2025, in Lagos, Nigeria.",
      "orientation": "portrait-primary",
      "prefer_related_applications": false,
      "icons": [
