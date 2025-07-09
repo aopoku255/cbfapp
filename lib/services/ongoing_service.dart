@@ -23,7 +23,7 @@ class ParallelSessionsService {
   Future<ParallelSessionsResponse> fetchUpcomingSessions() async {
     final response = await http.get(Uri.parse(upcomingUrl));
     if (response.statusCode == 200) {
-      print(response.body);
+
       return ParallelSessionsResponse.fromJson(json.decode(response.body));
     } else {
       throw Exception('Failed to load upcoming sessions: ${response.statusCode}');
@@ -33,7 +33,7 @@ class ParallelSessionsService {
   Future<ParallelSessionsResponse> fetchParallelSessions() async {
     final response = await http.get(Uri.parse(parallelUrl));
     if (response.statusCode == 200) {
-      print(response.body);
+
       return ParallelSessionsResponse.fromJson(json.decode(response.body));
     } else {
       throw Exception('Failed to load upcoming sessions: ${response.statusCode}');

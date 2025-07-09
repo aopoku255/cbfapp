@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:ffi';
 
 import 'package:cbfapp/models/user_model.dart';
 import 'package:cbfapp/util/constants.dart';

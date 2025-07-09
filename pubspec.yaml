@@ -44,7 +44,7 @@ dependencies:
   intl: ^0.18.1
   shared_preferences: ^2.2.3
   flutter_html: ^3.0.0-alpha.6
-  mobile_scanner: ^4.0.1
+  mobile_scanner: ^7.0.1
   rename_app: ^1.6.3
   socket_io_client: ^3.0.2
   uuid: ^4.5.1
@@ -64,6 +64,7 @@ dev_dependencies:
 flutter_launcher_icons:
   android: true
   ios: true
+  web: true
   image_path: "assets/images/africa.png"
 
 
@@ -78,6 +79,7 @@ flutter_native_splash:
 #  color: "#FFFFFF" # Background color for the splash screen
   android: true # Enable Android splash screen
   ios: true # Enable iOS splash screen
+  web: true
   background_image: assets/images/paperbg.png
 
 
