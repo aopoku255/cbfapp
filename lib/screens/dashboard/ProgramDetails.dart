@@ -3,7 +3,8 @@ import 'package:cbfapp/widgets/Button.dart';
 import 'package:cbfapp/widgets/MainText.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:intl/intl.dart'; // Keep if used for other widgets, otherwise can remove
+import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher.dart'; // Keep if used for other widgets, otherwise can remove
 
 class ProgramDetails extends StatefulWidget {
   const ProgramDetails({super.key});
@@ -41,6 +42,16 @@ class _ProgramDetailsState extends State<ProgramDetails> with TickerProviderStat
   Widget build(BuildContext context) {
     final sessions = ModalRoute.of(context)!.settings.arguments as List<SessionData>;
     final firstSession = sessions.first;
+
+    Future<void> launchUrlIfPossible(String url) async {
+      final uri = Uri.parse(url);
+      if (await canLaunchUrl(uri)) {
+        await launchUrl(uri, mode: LaunchMode.externalApplication); // opens in browser
+      } else {
+        throw 'Could not launch $url';
+      }
+    }
+
 
     return Scaffold(
       appBar: AppBar(

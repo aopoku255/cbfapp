@@ -13,6 +13,7 @@ class ParallelSessionsService {
 
   Future<ParallelSessionsResponse> fetchOngoingSessions() async {
     final response = await http.get(Uri.parse(ongoingUrl));
+    print(response.body);
     if (response.statusCode == 200) {
       return ParallelSessionsResponse.fromJson(json.decode(response.body));
     } else {
@@ -22,6 +23,7 @@ class ParallelSessionsService {
 
   Future<ParallelSessionsResponse> fetchUpcomingSessions() async {
     final response = await http.get(Uri.parse(upcomingUrl));
+    print(response.body);
     if (response.statusCode == 200) {
 
       return ParallelSessionsResponse.fromJson(json.decode(response.body));

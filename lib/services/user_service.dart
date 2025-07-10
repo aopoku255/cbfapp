@@ -15,7 +15,7 @@ class UserService {
     final response = await http.get(Uri.parse('${userDetailsUrl}/${userId}'));
 
     if (response.statusCode == 200) {
-      print(response.body);
+      
 
       return UserInfoModel.fromJson(json.decode(response.body));
     } else {

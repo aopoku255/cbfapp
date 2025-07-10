@@ -130,13 +130,13 @@ final List<Onboard> _pages = [
     image: "assets/images/onboarding2.jpg",
     title: "Reimagining Africa's Supply Chains for a Sustainable Future",
     description:
-        "Browse sessions by topic, speaker, or day. Tap ★ to save your must-attend panels and get reminders before they start. Start exploring the agenda.",
+        "Empowering local innovation, connecting communities, and driving green growth through smarter logistics and sustainable trade.",
   ),
   Onboard(
       image: "assets/images/onboarding3.jpg",
       title: "In-Person or Virtual, Connect with Supply Chain experts",
       description:
-          "Browse sessions by topic, speaker, or day. Tap ★ to save your must-attend panels and get reminders before they start. Start exploring the agenda."),
+          "Seamlessly engage with industry leaders anytime, anywhere to exchange insights, solve challenges, and shape Africa’s supply chain future."),
 ];
 
 class OnboardingContent extends StatelessWidget {
