@@ -100,9 +100,20 @@ class _AgendaListState extends State<AgendaList> with TickerProviderStateMixin {
 
         final Map<String, List<SessionData>> groupedSessions = {};
         for (var session in filteredSessions) {
-          final sessionId = session.session.id.toString();
-          groupedSessions.putIfAbsent(sessionId, () => []).add(session);
+          final id = session.session.id.toString();
+          final date = session.session?.date != null
+              ? _formatDate(DateTime.parse(session.session!.date!.toString()))
+              : '';
+          final start = session.starttime ?? '';
+          final end = session.endtime ?? '';
+
+          // Composite key: ID + Date + Time
+          final key = '$id|$date|$start-$end';
+
+          groupedSessions.putIfAbsent(key, () => []).add(session);
         }
+
+
 
         return Column(
           children: [
@@ -148,13 +159,14 @@ class _AgendaListState extends State<AgendaList> with TickerProviderStateMixin {
               ...groupedSessions.entries.map((entry) {
                 final sessionGroup = entry.value;
                 final first = sessionGroup.first;
+                final last = sessionGroup.last;
                 final title = first.name == "Parallel Session" ? first.session.name : first.name;
                 final date = first.session?.date != null
                     ? DateTime.parse(first.session!.date!.toString())
                     : null;
 
-                final startTime = first.starttime;
-                final endTime = first.endtime;
+                final startTime = last.starttime;
+                final endTime = last.endtime;
 
                 bool isLive = false;
                 bool isEnded = false;

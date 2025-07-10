@@ -19,7 +19,7 @@ import 'package:flutter/widgets.dart';
 // Define routes as a map
 Map<String, WidgetBuilder> get appRoutes{
   return {
-    '/': (context) => const Home(),
+    '/': (context) => const OnboardingScreen(),
     '/landing': (context) => const Landing(),
     '/login': (context) => const Login(),
     '/password': (context) => const Password(),

@@ -15,8 +15,6 @@ class RegisterService {
       body: json.encode({'email': email}),
     );
 
-    print('Response: ${response.body}');
-
     final data = json.decode(response.body);
 
     if (response.statusCode == 200) {

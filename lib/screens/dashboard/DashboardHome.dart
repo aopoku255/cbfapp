@@ -23,9 +23,9 @@ class _DashboardHomeState extends State<DashboardHome> {
   final PageController _pageController = PageController();
   int _currentPage = 0;
   final List<String> bannerImages = [
-    "assets/images/homebanner.png",
-    "assets/images/homebanner.png",
-    "assets/images/homebanner.png",
+    "assets/images/thankyou.jpg",
+    "assets/images/sponsors.jpg",
+    "assets/images/partners.jpg",
   ];
 
   @override
@@ -135,12 +135,13 @@ class _DashboardHomeState extends State<DashboardHome> {
                         },
                         itemBuilder: (context, index) {
                           return Container(
+                            color: Colors.white,
                             margin: EdgeInsets.symmetric(horizontal: 5),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(10),
                               child: Image.asset(
                                 bannerImages[index],
-                                fit: BoxFit.cover,
+                                fit: BoxFit.contain,
                                 width: double.infinity,
                               ),
                             ),

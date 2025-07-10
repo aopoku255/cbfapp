@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:ffi';
 
 import 'package:cbfapp/models/user_model.dart';
 import 'package:cbfapp/util/constants.dart';
@@ -16,7 +15,7 @@ class UserService {
     final response = await http.get(Uri.parse('${userDetailsUrl}/${userId}'));
 
     if (response.statusCode == 200) {
-      print(response.body);
+      
 
       return UserInfoModel.fromJson(json.decode(response.body));
     } else {
