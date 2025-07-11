@@ -150,21 +150,12 @@ class _ProfileState extends State<Profile> {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  InkWell(
-
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        MainText(text: "Invite a friend"),
-                        Icon(Icons.chevron_right_rounded),
-                      ],
-                    ),
-                  ),
+                 
                   const SizedBox(height: 20),
                 ],
               ),
             ),
-            const Button(label: "Join the CARISCA community"),
+            // const Button(label: "Join the CARISCA community"),
             const Spacer(),
             Image.asset("assets/images/dilogo.png"),
             const SizedBox(height: 10),

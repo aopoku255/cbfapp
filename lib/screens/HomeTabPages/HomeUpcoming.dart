@@ -66,7 +66,7 @@ class _HomeUpcomingState extends State<HomeUpcoming> {
         } else if (snapshot.hasError) {
           return Center(child: Text('Error: ${snapshot.error}'));
         } else if (!snapshot.hasData || snapshot.data!.data.isEmpty) {
-          return const Center(child: Text('No upcoming sessions for today. You can view agenda for full sessions'));
+          return const Center(child: MainText(text: 'No upcoming sessions for today. You can view agenda for full sessions', textAlign: TextAlign.center,));
         }
 
         final sessions = snapshot.data!.data;
