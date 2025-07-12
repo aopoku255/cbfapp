@@ -49,7 +49,7 @@ class _LoginState extends State<Login> {
       } catch (e) {
         print(e);
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(e.toString()), backgroundColor: Colors.red),
+          SnackBar(content: Text(e.toString().replaceFirst('Exception: ', '')), backgroundColor: Colors.red),
         );
       } finally {
         setState(() {
@@ -68,12 +68,7 @@ class _LoginState extends State<Login> {
         automaticallyImplyLeading: false,
         flexibleSpace: Container(
           padding: EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/images/gold.png"),
-              fit: BoxFit.cover,
-            ),
-          ),
+          color: AppColors.primaryColor,
         ),
       ),
       bottomSheet: Container(

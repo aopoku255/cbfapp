@@ -40,12 +40,7 @@ class _PasswordState extends State<Password> {
         automaticallyImplyLeading: false,
         flexibleSpace: Container(
           padding: EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/images/gold.png"),
-              fit: BoxFit.cover,
-            ),
-          ),
+          color: AppColors.primaryColor,
         ),
       ),
       bottomSheet: Container(
@@ -173,7 +168,7 @@ class _PasswordState extends State<Password> {
                                   Navigator.pushNamed(context, "/dashboard", arguments: loginResponse);
                                 } catch (e) {
                                   ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(content: Text("Login failed: ${e.toString()}")),
+                                    SnackBar(content: Text(e.toString().replaceFirst('Exception: ', '')), backgroundColor: Colors.red,),
                                   );
                                 } finally {
                                   setState(() => isLoading = false);

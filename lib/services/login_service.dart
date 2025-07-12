@@ -28,7 +28,7 @@ class LoginService {
 
       return LoginModel.fromJson(data);
     } else {
-      throw Exception('Login failed: ${response.body}');
+      throw Exception('Invalid email or password');
     }
   }
 }

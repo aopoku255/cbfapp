@@ -23,7 +23,7 @@ class RegisterService {
       // Don't try to parse to model, just throw message
       throw Exception(data['message'] ?? 'User already registered');
     } else {
-      throw Exception('Failed to register user');
+      throw Exception('Can not find any user with this email');
     }
   }
 
